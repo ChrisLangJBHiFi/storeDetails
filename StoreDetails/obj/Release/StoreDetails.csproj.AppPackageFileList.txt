@@ -1,0 +1,1 @@
+c:\temp\tobeprod\StoreDetails\StoreDetails\bin\Release\app.publish\1.0.0.0\StoreDetails.app

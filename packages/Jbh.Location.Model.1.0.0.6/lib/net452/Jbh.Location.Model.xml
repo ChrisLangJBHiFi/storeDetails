@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Jbh.Location.Model</name>
+    </assembly>
+    <members>
+        <member name="T:Jbh.Location.Model.LocationBay">
+            <summary>
+            Location Bay Class
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Jbh.Common.Model</name>
+    </assembly>
+    <members>
+        <member name="M:Jbh.Common.Model.LinqExtension.Split``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+            <summary>
+            Seperate an IEnumerable into multiple IEnumerables (chunks) of a particular size.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="collectionToSplit">The collection to split up.</param>
+            <param name="chunkSize">The size of each resulting collection.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jbh.Common.Model.LinqExtension.Chunk``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+            <summary>
+            Seperate an IEnumerable into multiple IEnumerables (chunks) of a particular size.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="collectionToSplit">The collection to split up.</param>
+            <param name="chunkSize">The size of each resulting collection.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jbh.Common.Model.LinqExtension.OrderByRandom``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Randomly order an IEnumerable. Note that the seed for the randomisation algorithm is derived from
+            the current time so it may be possible that this randomiser returns the same sequence across
+            different threads.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="collectionToRandomise"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jbh.Common.Model.StringExtension.IsTestTransaction(System.String)">
+            <summary>
+            If an Id is less than zero, it is a test transaction.
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="F:Jbh.Common.Model.Constants.FakeMoveitJourneyId">
+            <summary>
+            Allows ITV users to post a consignment to Moveit without a journey selected.
+            User to select journey in Moveit
+            </summary>
+        </member>
+        <member name="M:Jbh.Common.Model.BaseSearchCriteria`1.ExtendIsValid">
+            <summary>
+            ExtendIsValid will return true by default and can be overidden to provide custom functionality
+            </summary>
+            <returns>true if Valid and false otherwise</returns>
+        </member>
+        <member name="M:Jbh.Common.Model.BaseSearchCriteria`1.AppendSearchField(System.Collections.Specialized.NameValueCollection,System.String,System.Object)">
+            <summary>
+            Append derived search criteria to the stringbuilder, so a Query String can be generated.
+            </summary>
+        </member>
+        <member name="M:Jbh.Common.Model.BaseSearchCriteria`1.AppendBaseSearchFields(System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Append base search criteria to the stringbuilder, so a Query String can be generated.
+            </summary>
+        </member>
+        <member name="M:Jbh.Common.Model.Utilities.CertificateHelper.GetJBHiFiCertificate">
+            <summary>
+            Return a Certificate from the Certificate store.
+            http://stackoverflow.com/questions/22197762/webapi-httpclient-not-sending-client-certificate
+            </summary>
+            <returns>An X509Certificate2 certificate</returns>
+        </member>
+        <member name="M:Jbh.Common.Model.Utilities.ConfigHelper.GetAppSettingValueOrDefault``1(System.String,``0)">
+            <summary>
+            Get an app setting value from config file or default value if app setting doesn't exist or cannot be converted to T.
+            </summary>
+            <typeparam name="T">The type of value to return.</typeparam>
+            <param name="appSettingKey">The key of app setting in config file.</param>
+            <param name="defaultValue">The default value to return if unable to retrieve/convert value from config file.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jbh.Common.Model.Utilities.RetryHelper.Retry(System.Action,System.TimeSpan,System.Nullable{System.Int32})">
+            <summary>
+            RetryHelper.Retry(() => _locationApiLoaded = apiClient.GetById(_storeNo), TimeSpan.FromSeconds(1), null);
+            RetryHelper.Retry(() => { _locationApiLoaded = apiClient.GetById(_storeNo); }, TimeSpan.FromSeconds(3), 10);
+            Code Example: http://stackoverflow.com/questions/1563191/cleanest-way-to-write-retry-logic
+            </summary>
+        </member>
+        <member name="M:Jbh.Common.Model.Utilities.XmlSerializerHelper.SerializeTypeToXmlString``1(``0)">
+            <summary>
+            Serialize C# objects to an xml string.
+            </summary>
+        </member>
+        <member name="M:Jbh.Common.Model.Utilities.XmlSerializerHelper.DeserializeTypeFromXmlString``1(System.String)">
+            <summary>
+            Deserialize an xml string to a set of C# objects/models.
+            </summary>
+        </member>
+    </members>
+</doc>

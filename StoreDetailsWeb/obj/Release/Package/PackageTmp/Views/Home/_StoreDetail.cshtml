@@ -1,0 +1,463 @@
+﻿@model StoreDetailsWeb.Models.LocationModel
+<div class="modal-header">
+    <div>Store Detail :  @Model.Id - @Model.Name </div>
+    <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close</button>
+</div>
+<div class="modal-c-tabs">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs tabs-2 light-blue darken-3" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#StoreInfo" role="tab"><i class="fa fa-address-book"></i> Store Info</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#Categories" role="tab"><i class="fa fa-user-plus mr-1"></i> Categories</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#NormalHours" role="tab"><i class="fa fa-user-plus mr-1"></i> Normal Hours</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#SpecialHours" role="tab"><i class="fa fa-user-plus mr-1"></i> Special Hours</a>
+        </li>
+    </ul>
+</div>
+<div class="row" id="divSaveCancel" style="display:none; margin-top: 5px">
+    <div class="col" style="align-content:center">
+        <button type="button" id="btnSave" class="btn btn-sm">
+            <i class="fa fa-book"></i>
+            Save
+        </button> | <button type="button" id="btnCancel" class="btn btn-sm">
+            <i class="fa fa-book"></i>
+            Cancel
+        </button>
+    </div>
+</div>
+<div class="row" id="divEdit" style="margin-top: 5px">
+    <div class="col-md-12">
+        <button type="button" id="btnEdit" value="Click to Edit" class="btn btn-primary btn-block">
+            <i class="fa fa-book"></i>
+            Click to Edit
+        </button>
+    </div>
+</div>
+<!-- Tab panels -->
+<div class="tab-content">
+    <!--Panel 1 StoreInfo-->
+    <div class="tab-pane fade in show active" id="StoreInfo" role="tabpanel">
+        <div class="row" style="margin-top: 5px">
+            <div class="col-md-12" id="divStoreInfoRO">
+                <table class="table-responsive">
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Id)</th>
+                        <td>@Html.DisplayFor(model => model.Id)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Name)</th>
+                        <td>@Html.DisplayFor(model => model.Name)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.PhysicalAddress.State) </th>
+                        <td>@Html.DisplayFor(model => model.PhysicalAddress.State)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Email) </th>
+                        <td>@Html.DisplayFor(model => model.Email)</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-12" style="display:none" id="divStoreInfoEdit">
+                <form action="#" method="post" id="StoreInfoEditForm">
+                    @Html.HiddenFor(x => x.Id)
+                    <div>
+                        <label for="name">Name</label>
+                        @Html.EditorFor(model => model.Name, new { id = "Name" })
+                    </div>
+                    <div>
+                        <label for="state">State</label>
+                        @Html.EditorFor(model => model.PhysicalAddress.State, new { id = "State" })
+                    </div>
+                    <div>
+                        <label for="email">Email</label>
+                        @Html.EditorFor(model => model.Email, new { id = "Email" })
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <!--Panel 2 Categories-->
+    <div class="tab-pane fade" id="Categories" role="tabpanel">
+
+        <div class="col-md-12" style="margin-top: 5px">
+
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    @*@foreach (var item in Model.Categories)
+                        {
+                            <div class="panel-heading" style="margin-top: 5px">
+                                <a data-toggle="collapse" data-parent="#accordion" class="btn btn-secondary btn-block" href="#@item.Department">@item.Department</a>
+                            </div>
+                            <div id="@item.Department" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    @item.Name
+                                </div>
+                            </div>
+                        }*@
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--Panel 3 Normal Hours-->
+    <div class="tab-pane fade" id="NormalHours" role="tabpanel">
+        <div class="row" style="margin-top: 5px">
+            <div class="col-md-12" id="divNormalHoursRO">
+                <table class="table table-striped table-hover table-responsive table-condensed">
+                    <tr>
+                        <th>
+                            <h3 style="font-size:medium"><span style="font-weight:bolder">Day</span></h3>
+                        </th>
+
+                        <th>
+                            <h3 style="font-size:medium"><span style="font-weight:bolder">Opening Time</span></h3>
+                        </th>
+
+                        <th>
+                            <h3 style="font-size:medium"><span style="font-weight:bolder">Closing Time</span></h3>
+                        </th>
+                        <th>
+                            <h3 style="font-size:medium"><span style="font-weight:bolder">Is Open</span></h3>
+                        </th>
+                    </tr>
+                    @foreach (var item in Model.NormalTradingHours)
+                    {
+                    <tr>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DayOfWeek)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OpeningTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ClosingTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsOpen)
+                        </td>
+                    </tr>
+                    }
+                </table>
+            </div>
+            <div class="col-md-12" style="display:none" id="divNormalHoursEdit">
+                <form action="#" method="post" id="NormalHoursEditForm">
+                    @Html.HiddenFor(x => x.Id)
+                    <table class="table table-striped table-hover table-responsive table-condensed">
+                        <tr>
+                            <th>
+                                <h3 style="font-size:medium"><span style="font-weight:bolder">Day</span></h3>
+                            </th>
+                            <th>
+                                <h3 style="font-size:medium"><span style="font-weight:bolder">Opening Time</span></h3>
+                            </th>
+                            <th>
+                                <h3 style="font-size:medium"><span style="font-weight:bolder">Closing Time</span></h3>
+                            </th>
+                            <th>
+                                <h3 style="font-size:medium"><span style="font-weight:bolder">Is Open</span></h3>
+                            </th>
+                        </tr>
+                        @for (var i = 0; i < Model.NormalTradingHours.Count; ++i)
+                        {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(x => x.NormalTradingHours[i].DayOfWeek)
+                                @Html.HiddenFor(x => x.NormalTradingHours[i].DayOfWeek)
+                            </td>
+                            <td>
+                                @Html.DropDownListFor(x => x.NormalTradingHours[i].OpeningTime, new SelectList(Model.AvailableTraduingHours, Model.NormalTradingHours[i].OpeningTime))
+                                @Html.ValidationMessageFor(x => x.NormalTradingHours[i].OpeningTime, "", new { @class = "text-danger" })
+                            </td>
+                            <td>
+                                @Html.DropDownListFor(x => x.NormalTradingHours[i].ClosingTime, new SelectList(Model.AvailableTraduingHours, Model.NormalTradingHours[i].ClosingTime))
+                                @Html.ValidationMessageFor(x => x.NormalTradingHours[i].ClosingTime, "", new { @class = "text-danger" })
+                            </td>
+                            <td>
+                                @Html.EditorFor(x => x.NormalTradingHours[i].IsOpen)
+                                @Html.ValidationMessageFor(x => x.NormalTradingHours[i].IsOpen, "", new { @class = "text-danger" })
+                            </td>
+                        </tr>
+                        }
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--Panel 4 Special Hours-->
+    <div class="tab-pane fade" id="SpecialHours" role="tabpanel">
+        <div class="row" style="margin-top: 5px">
+            <div class="col-md-12" id="divSpecialHoursRO">
+                <table class="table table-striped table-hover table-responsive table-condensed">
+                    <tr>
+                        <th>
+                            <h3 style="font-size:medium"><span style="font-weight:bolder">Date</span></h3>
+                        </th>
+                        <th>
+                            <h3 style="font-size:medium"><span style="font-weight:bolder">Opening Time</span></h3>
+                        </th>
+                        <th>
+                            <h3 style="font-size:medium"><span style="font-weight:bolder">Closing Time</span></h3>
+                        </th>
+                        <th>
+                            <h3 style="font-size:medium"><span style="font-weight:bolder">Reason</span></h3>
+                        </th>
+                        <th>
+                            <h3 style="font-size:medium"><span style="font-weight:bolder">Open</span></h3>
+                        </th>
+                    </tr>
+                    @foreach (var item in Model.ScheduledTradingHourChanges)
+                    {
+                    <tr>
+
+                        <td>
+                            @item.Date.ToString("dd/MM/yyyy")
+
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OpeningTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ClosingTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Reason)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsOpen)
+                        </td>
+                    </tr>
+                    }
+                </table>
+            </div>
+            <div class="col-md-12" style="display:none" id="divSpecialHoursEdit">
+                <form action="#" method="post" class="addEditForm" id="SpecialHoursEditForm">
+                    @Html.HiddenFor(x => x.Id)
+
+                    <ul>
+                        <li>
+                            <h2>Add New Special Trading Hour</h2>
+                            <br />
+                        </li>
+                        <li>
+                            <label for="date">Date</label>
+                            <input id="date" name="date" placeholder="DD/MM/YYYY" type="text" />
+                        </li>
+                        <li>
+                            <label for="reason">Reason</label>
+                            <br />
+                        </li>
+                        <li>
+                            <label for="reason"> Public Holiday</label>
+                            <input type="radio" name="reason" value="PublicHoliday" onclick="hideOther();"> <br>
+
+                        </li>
+                        <li>
+                            <label for="reason">Stocktake </label>
+                            <input type="radio" name="reason" value="Stocktake" onclick="hideOther();">
+
+                        </li>
+                        <li>
+                            <label for="reason"> Other</label>
+                            <input type="radio" name="reason" value="Other" onclick="showOther();">
+
+                        </li>
+                        <li>
+                            <label for="reason"> </label>
+                            <input type="text" id="otherReason" style="display:none" />
+                        </li>
+
+                        <li>
+                            <label for="timePeriod"> Time Period </label>
+                            <br />
+                        </li>
+
+                        <li>
+                            <label for="timePeriod"> Closed All Day </label>
+                            <input type="radio" name="timePeriod" value="Closed" onclick="hideSpecialTimes();" />
+
+                        </li>
+                        <li>
+                            <label for="timePeriod"> Special Times </label>
+                            <input type="radio" name="timePeriod" value="SpecialTimes" onclick="showSpecialTimes();" />
+
+                        </li>
+
+                        
+                        <li id="SpecialOpeningTimes" style="display:none">
+                            <label for="openingTimes">Opening Times</label>
+                            @Html.DropDownList("OpeningTimes", new SelectList(Model.AvailableTraduingHours))
+                        </li>
+
+                        <li id="SpecialClosingTimes" style="display:none">
+                            <label for="closingTimes">Closing Times</label>
+                            @Html.DropDownList("ClosingTimes", new SelectList(Model.AvailableTraduingHours))
+
+                        </li>
+                    </ul>
+
+
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        var date_input = $('input[name="date"]'); //our date input has the name "date"
+        var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+        date_input.datepicker({
+            format: 'dd/mm/yyyy',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        })
+    })
+    function hideOther() {
+        document.getElementById('otherReason').style.display = 'none';
+    }
+    function showOther() {
+        document.getElementById('otherReason').style.display = 'block';
+    }
+    function hideSpecialTimes() {
+        document.getElementById('SpecialClosingTimes').style.display = 'none';
+        document.getElementById('SpecialOpeningTimes').style.display = 'none';
+        
+    }
+    function showSpecialTimes() {
+        document.getElementById('SpecialClosingTimes').style.display = 'block';
+        document.getElementById('SpecialOpeningTimes').style.display = 'block';
+     
+    }
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-bottom-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    }
+    var editMode = false;
+   
+    var menuSelected = 'Store Info'; //default
+
+
+    $('#btnEdit').on('click', EditMode);
+
+    $('#btnCancel').on('click', CancelMode);
+    $('#btnSave').on('click', SaveMode);
+
+    function SaveMode() {
+
+        var menu = menuSelected.trim().replace(' ', '');
+        var form = '#' + menu + 'EditForm';
+        var data = $(form).serializeArray();
+        var json = {};
+        for (var i = 0; i < data.length; i++) {
+            json[data[i]['name']] = data[i]['value'];
+        }
+
+        var data = JSON.stringify(json);
+        $.ajax({ url: '/Home/StoreInfoEdit', data: { storeDetail: data, type: menu }, method: 'POST' })
+            .done(function (data) {
+                editMode = false;
+                ButtonToggle();
+                EnableDisableEditMode(menuSelected.trim(), 0);
+                Details(data);
+
+            })
+            .fail(function () {
+                alert('Failed to save.');
+            });
+    };
+
+    function CancelMode() {
+        editMode = false;
+        ButtonToggle();
+        EnableDisableEditMode(menuSelected.trim(), 0);
+
+    };
+
+    function ButtonToggle() {
+        if (editMode) {
+            $('#divSaveCancel').show();
+            $('#divEdit').hide();
+        } else {
+            $('#divSaveCancel').hide();
+            $('#divEdit').show();
+        }
+
+    };
+
+    function EditMode() {
+        editMode = true;
+        ButtonToggle();
+        EnableDisableEditMode(menuSelected.trim(), 1);
+     }
+
+    function EnableDisableEditMode(menuItem, enable) {
+        menuItem = menuItem.replace(' ', '');
+
+     
+
+        var editDivName = '#div' + menuItem + 'Edit';
+        var readOnlyDivName = '#div' + menuItem + 'RO';
+
+        if (enable == 1) {
+
+            $(readOnlyDivName).hide();
+            $(editDivName).show();
+        } else {
+            $(readOnlyDivName).show();
+            $(editDivName).hide();
+        }
+
+    }
+    $('.nav-item').on('click', 'a', function (e) {
+        // 'this' is the clicked anchor
+        if (editMode) {
+            toastr.error('you have unsaved changes!');
+            //  alert('you have unsaved changes!');
+            return false;
+        }
+        else {
+            menuSelected = $(this).text();
+        }
+
+    });
+
+    function Details(data) {
+           
+        var options = { "backdrop": "static", keyboard: true };
+        var selectedMenu = menuSelected;
+        var selectTab = '#' + selectedMenu.trim().replace(' ', '');
+              
+        $('#myModalContent').html(data);
+        $('#myModal').modal(options);
+        $('#myModal').modal('show');
+        $('.nav-tabs a[href="' + selectTab + '"]').tab('show')
+        menuSelected = selectedMenu;
+             
+    }
+</script>

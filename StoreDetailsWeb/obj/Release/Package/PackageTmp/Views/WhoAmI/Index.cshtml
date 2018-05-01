@@ -1,0 +1,96 @@
+﻿@model StoreDetailsWeb.Models.AppData.Userprofile
+
+<div>
+    <h4>Who am I</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.accountEnabled)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.accountEnabled)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.companyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.companyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.department)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.department)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.displayName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.displayName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.employeeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.employeeId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.givenName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.givenName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.jobTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.jobTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.surname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.surname)
+        </dd>
+
+    </dl>
+    <h3>Roles:</h3>  
+    <ul>
+
+       @foreach (var item in Model.Roles)
+       {
+        <li>
+           @item
+        </li>
+
+       }
+
+    </ul>
+</div>
+<p>
+ 
+    @Html.ActionLink("Back", "Index", "Home")
+</p>

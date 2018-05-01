@@ -1,0 +1,213 @@
+﻿body {
+    padding-top: 0px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+#filtersubmit {
+    position: relative;
+    z-index: 1;
+    left: -25px;
+    top: 1px;
+    color: #7B7B7B;
+    cursor: pointer;
+    width: 0;
+}
+
+
+.modal-header, h4, .close {
+    background-color: #ffec0f;
+    color: black !important;
+    text-align: center;
+    font-size: 15px;
+}
+
+.modal-footer {
+    background-color: #f9f9f9;
+}
+
+nav-tabs {
+    background-color: #161616;
+    font-size: 10px;
+}
+
+.tab-content {
+    /*background-color:#303136;*/
+    /*color:#fff;*/
+    padding: 5px
+}
+
+.nav-tabs > li > a {
+    border: medium none;
+}
+
+    .nav-tabs > li > a:hover {
+        background-color: HighlightText !important;
+        border: medium none;
+        border-radius: 0;
+        color: #fff;
+    }
+
+body {
+    font: 14px/21px "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+}
+
+.addEditForm h2, .addEditForm label {
+    font-family: Georgia, Times, "Times New Roman", serif;
+}
+
+.form_hint, .required_notification {
+    font-size: 11px;
+}
+
+.hide {
+    display: none;
+}
+
+.addEditForm ul {
+    width: 750px;
+    list-style-type: none;
+    list-style-position: outside;
+    margin: 0px;
+    padding: 0px;
+}
+
+.addEditForm li {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    position: relative;
+}
+
+    .addEditForm li:first-child, .addEditForm li:last-child {
+        border-bottom: 1px solid #777;
+    }
+.addEditForm h2 {
+    margin: 0;
+    display: inline;
+}
+
+.required_notification {
+    color: #d45252;
+    margin: 5px 0 0 0;
+    display: inline;
+    float: right;
+}
+
+
+.addEditForm label {
+    width: 150px;
+    margin-top: 3px;
+    display: inline-block;
+    float: left;
+    padding: 3px;
+}
+
+.addEditForm input {
+    height: 20px;
+    width: 220px;
+    padding: 5px 8px;
+}
+
+.addEditForm textarea {
+    padding: 8px;
+    width: 300px;
+}
+
+.addEditForm button {
+    margin-left: 156px;
+}
+
+.addEditForm input, .contact_form textarea {
+    border: 1px solid #aaa;
+    box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;
+    border-radius: 2px;
+}
+
+    .addEditForm input:focus, .contact_form textarea:focus {
+        background: #fff;
+        border: 1px solid #555;
+        box-shadow: 0 0 3px #aaa;
+    }
+/* Button Style */
+button.submit {
+    background-color: #68b12f;
+    background: -webkit-gradient(linear, left top, left bottom, from(#68b12f), to(#50911e));
+    background: -webkit-linear-gradient(top, #68b12f, #50911e);
+    background: -moz-linear-gradient(top, #68b12f, #50911e);
+    background: -ms-linear-gradient(top, #68b12f, #50911e);
+    background: -o-linear-gradient(top, #68b12f, #50911e);
+    background: linear-gradient(top, #68b12f, #50911e);
+    border: 1px solid #509111;
+    border-bottom: 1px solid #5b992b;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    box-shadow: inset 0 1px 0 0 #9fd574;
+    -webkit-box-shadow: 0 1px 0 0 #9fd574 inset;
+    -moz-box-shadow: 0 1px 0 0 #9fd574 inset;
+    -ms-box-shadow: 0 1px 0 0 #9fd574 inset;
+    -o-box-shadow: 0 1px 0 0 #9fd574 inset;
+    color: white;
+    font-weight: bold;
+    padding: 6px 20px;
+    text-align: center;
+    text-shadow: 0 -1px 0 #396715;
+}
+
+    button.submit:hover {
+        opacity: .85;
+        cursor: pointer;
+    }
+ 
+.addEditForm input:focus, .contact_form textarea:focus { /* add this to the already existing style */
+    padding-right: 70px;
+}
+
+.addEditForm input, .contact_form textarea { /* add this to the already existing style */
+    -moz-transition: padding .25s;
+    -webkit-transition: padding .25s;
+    -o-transition: padding .25s;
+    transition: padding .25s;
+}
+
+.addEditForm input, .contact_form textarea {
+    padding-right: 30px;
+}
+input:required, textarea:required {
+    background: #fff url(images/red_asterisk.png) no-repeat 98% center;
+}
+.addEditForm input:focus:invalid, .addEditForm textarea:focus:invalid { /* when a field is considered invalid by the browser */
+    background: #fff url(images/invalid.png) no-repeat 98% center;
+    box-shadow: 0 0 5px #d45252;
+    border-color: #b03535
+}
+
+.addEditForm input:required:valid, .addEditForm textarea:required:valid { /* when a field is considered valid by the browser */
+    background: #fff url(images/valid.png) no-repeat 98% center;
+    box-shadow: 0 0 5px #5cd053;
+    border-color: #28921f;
+}
+ 
+ 

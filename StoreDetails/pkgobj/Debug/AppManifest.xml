@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--Created:cb85b80c-f585-40ff-8bfc-12ff4d0e34a9-->
+<App xmlns="http://schemas.microsoft.com/sharepoint/2012/app/manifest" Name="StoreDetails" ProductID="{f55d684a-5183-466e-a1b5-c5d741465ca3}" Version="1.0.0.0" SharePointMinVersion="16.0.0.0">
+  <Properties>
+    <Title>StoreDetails</Title>
+    <StartPage>https://localhost:44333/?{StandardTokens}</StartPage>
+    <!--https://d49c867f-e4ec-4082-8c79-143ccd652ad4.azurewebsites.net/-->
+  </Properties>
+  <AppPrincipal>
+    <!--<RemoteWebApplication ClientId="594afe07-9454-45e2-bfeb-d246cc4dca56" />-->
+    <!--Dev Site-->
+    <AutoDeployedWebApplication>
+      <DebugInfo ClientSecret="+Q7+FhzCNJZ5MkeKYnzJ3h7PLnRm5s3ARlWku/QmDK4=" AppUrl="https://localhost:44333/" />
+    </AutoDeployedWebApplication>
+  </AppPrincipal>
+  <AppPermissionRequests>
+    <AppPermissionRequest Scope="http://sharepoint/content/sitecollection/web" Right="FullControl" />
+  </AppPermissionRequests>
+</App>
